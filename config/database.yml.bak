@@ -21,7 +21,7 @@ development:
   database: baishi_development
   pool: 5
   username: root
-  password: 333888hiok
+  password: 
   socket: /var/run/mysqld/mysqld.sock
 
 # Warning: The database defined as "test" will be erased and
