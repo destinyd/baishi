@@ -1,18 +1,18 @@
-<p>
-  <b>Title:</b>
-  <%=h @topic.title %>
-</p>
+<% content_tag :div,:style => 'border:1px solid;padding:10px;height:auto;margin-bottom:5px' do %>
+  <p style='float:right;padding-top:5px'><%= @topic.created_at.strftime("writed at %m/%d/%Y") %></p>
+  <h2><%=h @topic.title %></h2>
 
 <p>
-  <b>Body text:</b>
   <%=h @topic.body_text %>
 </p>
+<br /><br />
+<hr />
 <p>
-  <b>comments:</b>
+  <h3>comments:</h3>
   <%@comments.each do |comment|%>
     <p>
-      <p><%= @level -= 1  %>level: </p>
-      <%=h comment.body_text%>
+      <p><%= @level -= 1  %>. &nbsp; <b><%= comment.user.username %></b>(<%= comment.created_at.strftime("%Y-%m-%d") %>): </p>
+      <p style='padding-left:5px'><%=h comment.body_text%></p>
     </p>
   <%end%>
   <%form_for @comment,:url => topic_comments_path(:topic_id => @topic) do |f|%>
@@ -32,3 +32,4 @@
 
 <%= link_to 'Edit', edit_topic_path(@topic) %> |
 <%= link_to 'Back', topics_path %>
+<% end %>

@@ -10,7 +10,7 @@ class TopicsController < ApplicationController
   # GET /topics/1
   # GET /topics/1.xml
   def show
-    @user = User.find_by_login params[:user_id]
+    @user = User.find_by_login params[:blog_id]
     @topic = Topic.find(params[:id])
     @comments = @topic.comments
     @comment  = @comments.new(:parent => @topic)
