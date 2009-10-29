@@ -1,0 +1,11 @@
+<% unless flash[:notice].blank? %>
+  <p style="color: green"><%= flash[:notice] %></p>
+<% end %>
+
+<% if @topics.blank? %>
+  <% content_tag :div,:style => 'border:1px solid;padding:5px;height:auto;margin-bottom:5px' do %>
+    no topic
+  <% end %>
+<% else %>
+  <%= render :partial => 'userpages/topic', :collection => @topics, :locale => @user %>
+<% end %>

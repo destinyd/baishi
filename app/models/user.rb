@@ -25,14 +25,38 @@ class User < ActiveRecord::Base
   # anything else you want your user to change should be added here.
   attr_accessible :login, :email, :name, :password, :password_confirmation
 
+  #for thissite
+  #RELATIONS  = {:friends  =>  0,  :employers  =>  1,  :employees =>  2 }
+  has_many  :topics,:order => 'id desc'
+  has_many  :relations
+  has_many  :followings,  :through => :relations#,:source => :user
+  has_many  :followers_relations, :class_name => 'Relation', :foreign_key => 'to_id'
+  has_many  :followers, :through => :followers_relations, :source => :user
+
+  def new_following(user_id)
+    self.relations.create(:to_id  =>  user_id)
+  end
+
+  def to_param
+    self.login
+  end
+  #  RELATIONS.each do |k,v|
+  #    class_eval do
+  #      has_many  "#{k}_relations" ,:class_name => 'Relation',:conditions => {:rtype =>  v}
+  #      has_many "#{k}",:through => "#{k}_relations",:class_name => 'User', :foreign_key => 'to_id',:source => :user
+  #    end
+  #    self.class_eval <<-END
+  #        def new_#{k}(t)
+  #          r = self.relations.create(:rtype  =>  #{v},:to_id =>  t.id)
+  #        end
+  #      END
+  #  end
 
 
-  # Authenticates a user by their login name and unencrypted password.  Returns the user or nil.
-  #
-  # uff.  this is really an authorization, not authentication routine.  
-  # We really need a Dispatch Chain here or something.
-  # This will also let us return a human error message.
-  #
+
+
+
+
   def self.authenticate(login, password)
     return nil if login.blank? || password.blank?
     u = find_by_login(login.downcase) # need to get the salt
@@ -45,6 +69,10 @@ class User < ActiveRecord::Base
 
   def email=(value)
     write_attribute :email, (value ? value.downcase : nil)
+  end
+
+  def username
+    self.name.blank? ? self.login : self.name
   end
 
   protected

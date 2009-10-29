@@ -1,0 +1,34 @@
+<p>
+  <b>Title:</b>
+  <%=h @topic.title %>
+</p>
+
+<p>
+  <b>Body text:</b>
+  <%=h @topic.body_text %>
+</p>
+<p>
+  <b>comments:</b>
+  <%@comments.each do |comment|%>
+    <p>
+      <p><%= @level -= 1  %>level: </p>
+      <%=h comment.body_text%>
+    </p>
+  <%end%>
+  <%form_for @comment,:url => topic_comments_path(:topic_id => @topic) do |f|%>
+    <p>
+      <b>new comment:</b>
+      <p>
+        <% f.fields_for :body,@comment do |b| %>
+          <%= b.text_area :body %>
+        <%end%>
+        <%= f.hidden_field :parent_id %>
+        <%= f.hidden_field :parent_type %>
+      </p>
+      <%=f.submit%>
+    </p>
+  <%end%>
+</p>
+
+<%= link_to 'Edit', edit_topic_path(@topic) %> |
+<%= link_to 'Back', topics_path %>

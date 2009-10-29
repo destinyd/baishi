@@ -1,0 +1,25 @@
+<div style='border:1px solid;padding:5px'>
+  <h1>New topic</h1>
+
+<% form_for(@topic) do |f| %>
+  <%= f.error_messages %>
+
+  <p>
+    <%= f.label :title %><br />
+    <%= f.text_field :title %>
+  </p>
+  <p>
+    <% f.fields_for :body do |body| %>
+      <%= body.text_area :body %>
+    <%  end %>
+  </p>
+  <p>
+    <%= f.tree_select :category_id, Category.roots, :id, :name, :include_blank => true %>
+  </p>
+  <p>
+    <%= f.submit 'Create' %>
+  </p>
+<% end %>
+
+<%= link_to 'Back', topics_path %>
+</div>

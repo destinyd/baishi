@@ -1,0 +1,5 @@
+<% content_tag :div,:style => 'border:1px solid;padding:5px;height:auto;margin-bottom:5px' do %>
+  <p><%= topic.created_at.strftime("writed at %m/%d/%Y") %></p>
+  <h3><%= link_to h(topic.title), blog_topic_path(@user,topic) %></h3>
+  <p><%=h  topic.body_text %></p>
+<%end%>

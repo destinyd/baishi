@@ -1,0 +1,32 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+       "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+  <meta http-equiv="content-type" content="text/html;charset=UTF-8" />
+  <title>Topics: <%= controller.action_name %></title>
+  <%= stylesheet_link_tag 'scaffold' %>
+</head>
+<body>
+<div id='header' style='height:30px;'>
+  <div style='float:right'>
+  <%=
+    render :partial => current_user ? 'header/login' : 'header/unlogin', :locale => current_user
+  %> 
+  </div>
+</div>
+
+<div id='maintainer' style='clear:both;margin:auto;width:800px;height:auto;min-height:400px'>
+<p style="color: green"><%= flash[:notice] %></p>
+<%= yield %>
+</div>
+
+<div id='footer' style='padding-top:20px;text-align:center;clear:both'>
+  <hr style='width:70%' />
+  Power By:DestinyD
+</div>
+
+
+
+</body>
+</html>

@@ -1,0 +1,6 @@
+hi: <%= link_to "#{current_user.name.blank? ? current_user.login : current_user.name}", blogs_path %>
+|
+<%=link_to 'write topic', new_topic_path %>
+|
+<%=link_to 'logout', logout_path %>
+

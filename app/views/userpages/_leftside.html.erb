@@ -1,0 +1,23 @@
+<div style='width:120px;height:120px;border:1px solid;margin:auto;margin-top:10px'>
+
+  </div>
+  <h3 style='text-align:center'><%= @user.name.blank? ? @user.login : @user.name  %></h2><br />
+<%if current_user and @user == current_user%>
+  <%if @user.followings.find_by_id(@user.id) %>
+    <%= link_to 'unfollow',relation_path(:following_id => @user.id),:method => :delete, :confirm => 'Are you sure?'  %>
+  <%else%>
+    <%= link_to 'follow',relations_path(:following_id => @user.id),:method => :post%>
+  <%end unless current_user%>
+<%end%>
+<%unless @user.followings.blank?%>
+<h2>followings</h2>
+<div>
+  <%= render :partial => 'userpages/follow',:collection => @user.followings %>
+</div>
+<%end%>
+<%unless @user.followers.blank?%>
+<h2>followers</h2>
+<div>
+  <%= render :partial => 'userpages/follow',:collection => @user.followers %>
+</div>
+<%end%>
