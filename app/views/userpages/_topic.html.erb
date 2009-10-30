@@ -1,5 +1,6 @@
 <% content_tag :div,:style => 'border:1px solid;padding:5px;height:auto;margin-bottom:5px' do %>
-  <p><%= topic.created_at.strftime("writed at %m/%d/%Y") %></p>
+  <p><%= topic.created_at.strftime("%Y-%m-%d") %></p>
   <h3><%= link_to h(topic.title), blog_topic_path(@user,topic) %></h3>
   <p><%=h  topic.body_text %></p>
+  <p><%= topic.created_at.strftime(" %H:%M") %> | <%= link_to 'comment', blog_topic_path(@user,topic) + '#comment' %>(<%= topic.comments.count %>) </p>
 <%end%>

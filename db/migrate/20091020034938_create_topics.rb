@@ -11,7 +11,7 @@ class CreateTopics < ActiveRecord::Migration
     end
     add_index(:topics, :user_id)
     add_index(:topics, :body_id)
-    add_index(:topics, :categroy_id)
+    add_index(:topics, :category_id)
   end
 
   def self.down
