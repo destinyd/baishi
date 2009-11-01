@@ -1,0 +1,24 @@
+<div style='width:250px;border:1px solid;float:left'>
+  newest users:
+<ul>
+<% @users.each do |user| %>
+<li><%= link_to user.login,blog_path(user) %></li>
+<%end%>
+</ul>
+</div>
+<div style='width:250px;border:1px solid;float:left;margin-left:10px'>
+  recent topics:
+<ul>
+<% @topics.each do |topic| %>
+<li><%= link_to topic.title,topic_path(topic) %></li>
+<%end%>
+</ul>
+</div>
+<div style='width:250px;border:1px solid;float:left;margin-left:10px'>
+  hotest topics:
+<ul>
+<% @topics.each do |topic| %>
+<li><%= link_to topic.title,topic_path(topic) %></li>
+<%end%>
+</ul>
+</div>

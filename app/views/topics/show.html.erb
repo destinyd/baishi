@@ -8,6 +8,7 @@
 <br /><br />
 <hr />
 <div id='comments'>
+  <% unless @comments.blank?   %>
   <h3>comments:</h3>
   <%@comments.each do |comment|%>
     <p>
@@ -15,7 +16,9 @@
       <p style='padding-left:5px'><%=h comment.body_text%></p>
     </p>
   <%end%>
+  <% end %>
 </div>
+<% if @comment %>
 <div id='comment'>
   <%form_for @comment,:url => topic_comments_path(:topic_id => @topic) do |f|%>
     <p>
@@ -27,9 +30,10 @@
         <%= f.hidden_field :parent_id %>
         <%= f.hidden_field :parent_type %>
       </p>
-      <%=f.submit%>
+      <%=f.submit 'comment'  %>
     </p>
   <%end%>
 </div>
+<% end %>
 
 <% end %>

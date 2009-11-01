@@ -12,7 +12,7 @@ ActionController::Routing::Routes.draw do |map|
 
 #  map.blog '/blogs/:id', :controller => 'userpages', :action => 'show'
 
-  map.resources :homepages
+  map.resources :homepages, :collection => {:blogs => :get}
   map.resources :relations
   #  map.show_userpage_path  '/:id',:controller => :userpages, :action => :show
   map.root :controller => :homepages

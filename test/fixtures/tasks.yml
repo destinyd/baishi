@@ -1,0 +1,17 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  name: MyString
+  project_id: 1
+  user_id: 1
+  over_at: 2009-10-31 21:40:15
+  body_id: 1
+  rank: 1
+
+two:
+  name: MyString
+  project_id: 1
+  user_id: 1
+  over_at: 2009-10-31 21:40:15
+  body_id: 1
+  rank: 1

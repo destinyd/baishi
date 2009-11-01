@@ -32,6 +32,12 @@ class User < ActiveRecord::Base
   has_many  :followings,  :through => :relations#,:source => :user
   has_many  :followers_relations, :class_name => 'Relation', :foreign_key => 'to_id'
   has_many  :followers, :through => :followers_relations, :source => :user
+  has_many  :projects
+  has_many  :user_tasks
+  has_many  :tasks, :through => :user_tasks
+  
+  named_scope :recent,:order => 'id desc', :limit => 10
+
 
   def new_following(user_id)
     self.relations.create(:to_id  =>  user_id)

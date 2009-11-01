@@ -3,9 +3,10 @@
 <% end %>
 
 <% if @topics.blank? %>
-  <% content_tag :div,:style => 'border:1px solid;padding:5px;height:auto;margin-bottom:5px' do %>
+  <div style='border:1px solid;padding:5px;height:auto;margin-bottom:5px'>
     no topic
-  <% end %>
+  </div>
 <% else %>
   <%= render :partial => 'userpages/topic', :collection => @topics, :locale => @user %>
+  <%= will_paginate @topics, :style => 'float:right' %>
 <% end %>

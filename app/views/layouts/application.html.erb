@@ -8,19 +8,23 @@
   <%= stylesheet_link_tag 'scaffold' %>
 </head>
 <body>
+<div style='width:800px;margin:auto'>
 <div id='header' style='height:30px;'>
   <div style='float:right'>
   <%=
     render :partial => current_user ? 'header/login' : 'header/unlogin', :locale => current_user
   %> 
   </div>
+<div style='margin-bottom:10px'>
+  <%= render 'header/link' %>
+</div>
 </div>
 
 <div id='maintainer' style='clear:both;margin:auto;width:800px;height:auto;min-height:400px'>
-<p style="color: green"><%= flash[:notice] %></p>
-<%= yield %>
+<div>
+  <%= yield %>
 </div>
-
+</div>
 <div id='footer' style='padding-top:20px;text-align:center;clear:both'>
   <hr style='width:70%' />
   Power By:DestinyD
