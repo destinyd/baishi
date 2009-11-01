@@ -1,1 +1,1 @@
-<%= LINKS.map{|text,url| link_to text,url }.join(' | ') %>
+<%= LINKS.map{|url| link_to url[0],url[1] }.join(' | ') %>
