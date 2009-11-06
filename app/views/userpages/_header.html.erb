@@ -1,4 +1,4 @@
 <h1>
-  <%= link_to "#{@user.username}'s blog",blog_topics_path(params[:blog_id]) %> 
+  <%= link_to "#{@user.username}'s blog",blog_path(params[:blog_id] || @user.login) %> 
   <%= link_to 'write', new_topic_path if current_user == @user %>
 </h1>

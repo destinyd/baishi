@@ -8,8 +8,9 @@
     <%= f.text_field :name %>
   </p>
   <p>
-    <%= f.label :body %><br />
-    <%= f.text_field :body %>
+    <% f.fields_for :body do |body| %>
+      <%= body.text_area :body %>
+    <%  end %>
   </p>
   <p>
     <%= f.submit 'Create' %>
