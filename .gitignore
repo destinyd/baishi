@@ -3,3 +3,4 @@ tmp
 public
 nbproject
 config/database.yml
+db/schema.rb
