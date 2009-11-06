@@ -6,7 +6,7 @@ class CreateCategorys < ActiveRecord::Migration
 
       t.timestamps
     end
-    add_index(:categroys, :parent_id)
+    add_index(:categorys, :parent_id)
   end
 
   def self.down

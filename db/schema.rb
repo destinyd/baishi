@@ -15,14 +15,14 @@ ActiveRecord::Schema.define(:version => 20091031143046) do
     t.text "body"
   end
 
-  create_table "categroys", :force => true do |t|
+  create_table "categorys", :force => true do |t|
     t.string   "name"
     t.integer  "parent_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
-  add_index "categroys", ["parent_id"], :name => "index_categroys_on_parent_id"
+  add_index "categorys", ["parent_id"], :name => "index_categorys_on_parent_id"
 
   create_table "comments", :force => true do |t|
     t.integer  "parent_id"
@@ -83,14 +83,14 @@ ActiveRecord::Schema.define(:version => 20091031143046) do
     t.string   "title"
     t.integer  "user_id"
     t.integer  "body_id"
-    t.integer  "categroy_id"
+    t.integer  "category_id"
     t.integer  "shared_type"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
   add_index "topics", ["body_id"], :name => "index_topics_on_body_id"
-  add_index "topics", ["categroy_id"], :name => "index_topics_on_categroy_id"
+  add_index "topics", ["category_id"], :name => "index_topics_on_category_id"
   add_index "topics", ["user_id"], :name => "index_topics_on_user_id"
 
   create_table "user_tasks", :force => true do |t|
