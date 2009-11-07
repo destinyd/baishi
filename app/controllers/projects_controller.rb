@@ -1,5 +1,5 @@
 class ProjectsController < ApplicationController
-  before_filter :with_user
+  before_filter :with_user,:except => [:show]
   # GET /projects
   # GET /projects.xml
   def index
@@ -9,7 +9,7 @@ class ProjectsController < ApplicationController
   # GET /projects/1
   # GET /projects/1.xml
   def show
-    @project = current_user.projects.find(params[:id])
+    @project = Project.find(params[:id])
   end
 
   # GET /projects/new

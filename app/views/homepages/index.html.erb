@@ -15,10 +15,10 @@
 </ul>
 </div>
 <div style='width:250px;border:1px solid;float:left;margin-left:10px'>
-  hotest topics:
+  recent projects:
 <ul>
-<% @topics.each do |topic| %>
-<li><%= link_to topic.title,topic_path(topic) %></li>
+<% @projects.each do |project| %>
+<li><%= link_to project.name,project_path(project) %></li>
 <%end%>
 </ul>
 </div>
